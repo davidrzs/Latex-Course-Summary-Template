@@ -1,0 +1,146 @@
+\documentclass{sciposter}
+\usepackage[dvipsnames,usenames,svgnames,table]{xcolor} 
+\usepackage{lipsum}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[german]{babel}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{wrapfig}
+\usepackage{gensymb}
+\usepackage[utf8]{inputenc}
+\usepackage{empheq}
+
+
+\geometry{
+ landscape,
+ a1paper,
+ left=5mm,
+ right=50mm,
+ top=5mm,
+ bottom=50mm,
+ }
+
+
+
+%BEGIN LISTINGDEF
+
+
+\usepackage{listings}
+\usepackage{sourcecodepro}
+
+\definecolor{listing-background}{rgb}{0.97,0.97,0.97}
+\definecolor{listing-rule}{HTML}{B3B2B3}
+\definecolor{listing-numbers}{HTML}{B3B2B3}
+\definecolor{listing-text-color}{HTML}{000000}
+\definecolor{listing-keyword}{HTML}{435489}
+\definecolor{listing-identifier}{HTML}{435489}
+\definecolor{listing-string}{HTML}{00999a}
+\definecolor{listing-comment}{HTML}{8e8e8e}
+\definecolor{listing-javadoc-comment}{HTML}{006CA9}
+
+\lstdefinestyle{eisvogellistingstyle}{
+	language=java,
+	numbers=left,
+	backgroundcolor=\color{listing-background},
+	basicstyle=\color{listing-text-color}\small\ttfamily{}, % print whole listing small
+	xleftmargin=0.8em, % 2.8 with line numbers
+	breaklines=true,
+	frame=single,
+	framesep=0.6mm,
+	rulecolor=\color{listing-rule},
+	frameround=ffff,
+	framexleftmargin=0.4em, % 2.4 with line numbers | 0.4 without them
+	tabsize=4, %width of tabs
+	numberstyle=\color{listing-numbers},
+	aboveskip=1.0em,
+	keywordstyle=\color{listing-keyword}\bfseries, % underlined bold black keywords
+	classoffset=0,
+	sensitive=true,
+	identifierstyle=\color{listing-identifier}, % nothing happens
+	commentstyle=\color{listing-comment}, % white comments
+	morecomment=[s][\color{listing-javadoc-comment}]{/**}{*/},
+	stringstyle=\color{listing-string}, % typewriter type for strings
+	showstringspaces=false, % no special string spaces
+	escapeinside={/*@}{@*/}, % for comments
+	literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\'e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+	{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}
+\lstset{style=eisvogellistingstyle}
+\lstset{style=eisvogellistingstyle}
+
+
+%END LISTINGDEF
+
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+\newcommand\TODOS[1]{{\textcolor{red}{#1}}}
+
+\newcommand{\vectwo}[2]
+{
+   \begin{pmatrix} #1 \\ #2 \end{pmatrix}
+}
+\newcommand{\vecthree}[3]
+{
+   \begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}
+}
+
+\newlength\dlf  % Define a new measure, dlf
+\newcommand\alignedbox[2]{
+% Argument #1 = before & if there were no box (lhs)
+% Argument #2 = after & if there were no box (rhs)
+&  % Alignment sign of the line
+{
+\settowidth\dlf{$\displaystyle #1$}
+    % The width of \dlf is the width of the lhs, with a displaystyle font
+\addtolength\dlf{\fboxsep+\fboxrule}
+    % Add to it the distance to the box, and the width of the line of the box
+\hspace{-\dlf}
+    % Move everything dlf units to the left, so that & #1 #2 is aligned under #1 & #2
+\boxed{#1 #2}
+    % Put a box around lhs and rhs
+}
+}
+
+
+\usepackage{graphicx,url}
+
+\graphicspath{ {img/} }
+\title{\huge{Numerische Methoden Zusammenfassung}}
+
+\author{\large{David Zollikofer}}
+
+
+\begin{document}
+\fontfamily{phv}\selectfont
+
+\maketitle
+
+
+
+\begin{multicols}{3}
+\section{Numerische Lineare Algebra}	
+	\subsection{Eigenwerte finden}
+\begin{lstlisting}[language=Python]
+def main():
+	return Null
+\end{lstlisting}
+
+
+\end{multicols}
+\end{document}
