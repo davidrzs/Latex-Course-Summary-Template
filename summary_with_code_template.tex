@@ -29,9 +29,9 @@
 %BEGIN LISTINGDEF
 
 
+
 \usepackage{listings}
 \usepackage{sourcecodepro}
-
 \definecolor{listing-background}{rgb}{0.97,0.97,0.97}
 \definecolor{listing-rule}{HTML}{B3B2B3}
 \definecolor{listing-numbers}{HTML}{B3B2B3}
@@ -81,7 +81,7 @@
 	{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
 }
 \lstset{style=eisvogellistingstyle}
-\lstset{style=eisvogellistingstyle}
+
 
 
 %END LISTINGDEF
@@ -89,16 +89,6 @@
 
 \newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
 
-\newcommand\TODOS[1]{{\textcolor{red}{#1}}}
-
-\newcommand{\vectwo}[2]
-{
-   \begin{pmatrix} #1 \\ #2 \end{pmatrix}
-}
-\newcommand{\vecthree}[3]
-{
-   \begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}
-}
 
 \newlength\dlf  % Define a new measure, dlf
 \newcommand\alignedbox[2]{
@@ -116,15 +106,13 @@
     % Put a box around lhs and rhs
 }
 }
-
-
 \usepackage{graphicx,url}
 
-\graphicspath{ {img/} }
-\title{\huge{Numerische Methoden Zusammenfassung}}
+%BEGIN TITLE
+\title{\huge{Title}}
 
-\author{\large{David Zollikofer}}
-
+\author{\large{Authors}}
+%END TITLE
 
 \begin{document}
 \fontfamily{phv}\selectfont
@@ -134,8 +122,9 @@
 
 
 \begin{multicols}{3}
-\section{Numerische Lineare Algebra}	
-	\subsection{Eigenwerte finden}
+\section{First Section}	
+
+%Example Listing
 \begin{lstlisting}[language=Python]
 def main():
 	return Null
