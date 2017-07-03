@@ -1,0 +1,321 @@
+\documentclass{sciposter}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[dvipsnames,usenames,svgnames,table]{xcolor} 
+\usepackage{lipsum}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[german]{babel}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{wrapfig}
+\usepackage{gensymb}
+\usepackage{empheq}
+
+
+
+
+
+
+
+\geometry{
+ landscape,
+ a1paper,
+ left=5mm,
+ right=50mm,
+ top=5mm,
+ bottom=50mm,
+ }
+
+\usepackage{setspace}
+
+\renewcommand{\baselinestretch}{1} 
+
+%BEGIN LISTINGDEF
+
+
+\usepackage{listings}
+\usepackage{sourcecodepro}
+
+\definecolor{listing-background}{rgb}{0.97,0.97,0.97}
+\definecolor{listing-rule}{HTML}{B3B2B3}
+\definecolor{listing-numbers}{HTML}{B3B2B3}
+\definecolor{listing-text-color}{HTML}{000000}
+\definecolor{listing-keyword}{HTML}{435489}
+\definecolor{listing-identifier}{HTML}{435489}
+\definecolor{listing-string}{HTML}{00999a}
+\definecolor{listing-comment}{HTML}{8e8e8e}
+\definecolor{listing-javadoc-comment}{HTML}{006CA9}
+
+\lstdefinestyle{eisvogellistingstyle}{
+	language=java,
+	numbers=left,
+	backgroundcolor=\color{listing-background},
+	basicstyle=\color{listing-text-color}\small\ttfamily{}, % print whole listing small
+	xleftmargin=0.8em, % 2.8 with line numbers
+	breaklines=true,
+	frame=single,
+	framesep=0.6mm,
+	rulecolor=\color{listing-rule},
+	frameround=ffff,
+	framexleftmargin=0.4em, % 2.4 with line numbers | 0.4 without them
+	tabsize=4, %width of tabs
+	numberstyle=\color{listing-numbers},
+	aboveskip=1.0em,
+	keywordstyle=\color{listing-keyword}\bfseries, % underlined bold black keywords
+	classoffset=0,
+	sensitive=true,
+	identifierstyle=\color{listing-identifier}, % nothing happens
+	commentstyle=\color{listing-comment}, % white comments
+	morecomment=[s][\color{listing-javadoc-comment}]{/**}{*/},
+	stringstyle=\color{listing-string}, % typewriter type for strings
+	showstringspaces=false, % no special string spaces
+	escapeinside={/*@}{@*/}, % for comments
+	literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\'e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+	{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}
+\lstset{style=eisvogellistingstyle}
+
+
+
+%END LISTINGDEF
+
+
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+\newcommand\TODOS[1]{{{\huge TODO!}\textcolor{red}{#1}}}
+
+\newcommand{\vectwo}[2]
+{
+   \begin{pmatrix} #1 \\ #2 \end{pmatrix}
+}
+\newcommand{\vecthree}[3]
+{
+   \begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}
+}
+
+\newlength\dlf  % Define a new measure, dlf
+\newcommand\alignedbox[2]{
+% Argument #1 = before & if there were no box (lhs)
+% Argument #2 = after & if there were no box (rhs)
+&  % Alignment sign of the line
+{
+\settowidth\dlf{$\displaystyle #1$}
+    % The width of \dlf is the width of the lhs, with a displaystyle font
+\addtolength\dlf{\fboxsep+\fboxrule}
+    % Add to it the distance to the box, and the width of the line of the box
+\hspace{-\dlf}
+    % Move everything dlf units to the left, so that & #1 #2 is aligned under #1 & #2
+\boxed{#1 #2}
+    % Put a box around lhs and rhs
+}
+}
+
+
+\usepackage{graphicx,url}
+
+\graphicspath{ {img/} }
+\title{\huge{Numerische Mathematik}}
+
+\author{\large{Max Mustermann}}
+
+
+
+\begin{document}
+
+
+\maketitle
+
+
+
+
+\begin{multicols}{3}
+
+%QUADRATUR
+\section{Quadratur}
+\subsection*{Newton-Cotes Quadratur}
+Mit äquidistanten Stützstellen: Wir lösen $\int_{a}^{b}f(x) dx = \sum_{i=1}^{n} w_i f(x_i)$ mit Stützstellen $f(x_i)$ und Gewichten $w_i$. Zudem lohnt es sich mit 
+\begin{lstlisting}[language=Python]
+np.linspace(a,b,N)
+\end{lstlisting}
+Zwischenpunkte einzubauen, sodass die Quadratur auf Teilintervallen erfolgen kann.
+
+\begin{center}
+	\renewcommand\arraystretch{2} \setlength\minrowclearance{2pt}
+	\begin{tabular}{ c c c }
+		\textsc{Verfahren} & \textsc{Ordnung} & \textsc{Formel} \\ \hline 
+		Mittelpunktsregel & $2$ & $f(\frac{a+b}{2}) (b-a)$ \\   \hline
+		Trapezregel & $2$ & $\frac{f(a) + f(b)}{2} (b-a)$ \\ \hline\textsl{}
+		Simspsonregel & $4$ &  $\frac{b-a}{6} (f(a) + 4f(\frac{a+b}{2}) + f(b) )$  \\ \hline
+	\end{tabular}
+\end{center}
+$\rightarrow$ \textbf{Adaptive Quadratur} Nutze zwei Verfahren verschiedener Ordnung. Falls $||I_1 - I_2|| < tol$ apzeptiere höhere Ordnung, ansonsten Teile Intervall auf und und beginne auf Teilintervallen von vorne. 
+
+\subsection*{Monte-Carlo Quadratur}
+In chaotischen Situationen kann diese probabilistische Methode mit garantierter Konvergenz $\mathcal{O}(n^{-\frac{1}{2}})$ eingesetzt werden dabei gilt: 
+$$s_i = a + (b-a)t_i$$ wobei $t_i \in [0,1]$ Vektoren sind welche zufällig erzeugt wurden.
+\begin{empheq}[box=\widefbox]{align*}
+I &= \int_{a}^{b} z(s) ds = |b-a| \frac{1}{N} \sum_{i=1}^{N} z(s_i)
+\end{empheq}
+\textbf{Vertrauensintervall}:
+$$\widetilde{\sigma_N} = \sqrt{\frac{\frac{1}{N} \sum_{i=1}^{N}z(t_i)^2 - (\frac{1}{N}\sum_{i=1}^{N} z(t_i))^2 }{N-1}} = \frac{\sigma_N}{\sqrt{N}}$$
+In 68.3\% der Fälle liegt der Wert unseres Integrals in $$[I_N - \widetilde{\sigma_N}, I_N + \widetilde{\sigma_N}]$$
+
+\subsection*{Gauss-Legendre Quadratur}
+Wir wollen mit $n$ Gewichten und Stützstellen Integrale der Ordnung $2n$ genau berechnen.
+Mithilfe des \textsc{Golub Welsch Algorithmus} (Skript Seite 167) können wir die Gewichte berechnen.
+Die Gewichte können wir wie folgt von $[-1,1]\to [a,b]$ umskalieren:
+$$\hat{x_i} = \frac{b-a}{2}(x_i + 1) + a \text{  \&  }  \hat{w_i} = \frac{b-a}{w_i}$$  
+
+\subsection*{Mehrdimensionale Quadratur}
+
+\begin{lstlisting}[language=Python]
+def trapezoid2d(f, a, b, Nx, c, d, Ny):
+	"""Approximiert das Doppelintegral.
+	"""
+	# Definiere F(y) = int_a^b f(x,y) dx
+	F = lambda y: integrate(lambda x: f(x, y), a, b, Nx)
+	#integriere wie gewohnt.
+	return integrate(F, c, d, Ny) 
+
+\end{lstlisting}
+
+
+%NUMERISCHE LINEARE ALGEBRA	
+
+\section{Ausgleichsrechnung}
+\subsection*{Lineare Ausgleichsrechnung}
+Wir haben hier Probleme bei welchen ein Gleichungsystem  $Ax = b$ überbestimmt ist. 
+In $A$ haben wir die Punkte an welchen wir Messwerte sammeln, in $x$ die Variabeln und in $b$ die Resultate der Messung.
+\subsubsection*{Beispiel}
+Seien $(2, \sqrt{6})$, $(0, -\sqrt{6})$ ,$(-1,2\sqrt{6})$ Datenpunkte, dann können wir beim Modell $f(x) = \beta_1 x + \beta_2$ Folgendes Ausgleichsproblem kann nun ausgestellt werden: 
+
+\begin{equation*}
+\begin{pmatrix}
+2 & 0\\
+0 & 1\\
+-2 & 1
+\end{pmatrix}
+\begin{pmatrix}
+\beta_1\\
+\beta_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+\sqrt{6} \\
+-\sqrt{6} \\
+2\sqrt{6}
+\end{pmatrix}
+\end{equation*}
+Wir setzen dabei alle $\beta_2 = 1$ da es ja genau 1 mal im Modell vorkommt.
+
+\subsubsection*{Lösen des Problems}
+\begin{enumerate}
+	\item \textbf{Normalengleichung}
+	\begin{lstlisting}[language=Python]
+B = np.dot(A.T,A) # calc B=A'*A & y=A'*t
+y = np.dot(A.T,b)
+x_ng = np.linalg.solve(B,y) # Löse LGS: Bx=y
+	\end{lstlisting}
+	\item \textbf{QR-Zerlegung}
+	\begin{lstlisting}[language=Python]
+Q,R_bar = np.linalg.qr(A)
+# Bestimme quadratische Matrix R und Vektor c
+m,n = np.shape(A)
+R = R_bar[:n,:n]
+b_tmp = np.dot(Q.T,b)
+c = b_tmp[:n];
+x_qr = np.linalg.solve(R,c) # Löse GLS: Rx=Q'b
+	\end{lstlisting}
+	\item \textbf{(SVD) Singulärwertzerlegung}
+	\begin{lstlisting}[language=Python]
+U,s,V = np.linalg.svd(A)  
+S = np.zeros_like(A)
+S[:2, :2] = np.diag(s)
+invS = np.linalg.pinv(S)
+x_svd = np.dot(np.dot(np.dot(V,invS),U.T),b)
+	\end{lstlisting}
+\end{enumerate}
+
+
+\section{Polynominterpolation}
+
+\begin{enumerate}
+	\item \textbf{Monombasis}
+	Wir stellen folgende Bedingungen an die Parameter:
+	$$\begin{matrix}
+	c_0 x_0 ^0 + c_1 x_0 ^1 \dots c_{m-1}x_0 ^{m-1} \\
+		\vdots  \hspace{3cm} \vdots \\
+	c_0 x_{m-1}^0 + c_1 x_{m-1}^1 \dots c_{m-1}x_{m-1}^{m-1}
+	\end{matrix} $$
+Dabei werden wir wie folgt vorgehen:
+\begin{lstlisting}[language=Python]
+x = np.array([x_0, ..., x_m-1])
+y = np.array([y_0, ..., y_m-1])
+c = np.polyfit(x,y,m) # m ist der Grad
+coeffs = coefs[::-1]#da c in Ordnung ..+Ax^2+Bx+C 
+x_new = np.linspace(a,b,c)
+y_fit = np.polyval(coeffs, x_new) 
+plt.plot(...)
+\end{lstlisting}
+Achtung $\rightarrow$ dieses Verfahren muss bei neuem Stützpunkt komplett neu gerechnet werden.
+	
+	\item \textbf{Lagrange Basis}
+Wir machen den Ansatz $$P(x) = \sum_{j=0}^{m-1} y_j L_j (x)$$. Dabei gilt $L_j (x) = \prod_{i=0 \\ i \neq j}^{m-1} \frac{x-x_i}{x_j - x_i}$
+
+	\item \textbf{Newton Basis}
+	Sei die Newton Basis gegeben durch: 
+	$$\begin{matrix}
+	N_0 (x) = 1\\
+	N_1 (x) = (x-x_0)\\
+	N_2 (x) = (x-x_0)(x-x_1)\\
+	\vdots \hspace{3cm} \vdots \\
+	N_n (x) = \prod_{i=0}^{n-1} (x-x_i)
+	\end{matrix}$$
+Das Interpolationspolynom ist gegeben durch: $$P(x) = \sum_{j=0}^{m-1} \alpha_j N_j (x)$$
+Dies Lösen wir durch das aufstellen folgender Gleichung $P(x_i) = \sum_{j=0}^{m-1}\alpha_j N_j(x_i) \overset{!}{=} y_i$ Wir können dabei folgendes Gleichungsystem herleiten, welches wir lösen können:
+
+\begin{equation*}
+\begin{pmatrix}
+N_0 (x_0) & \dots & N_{m-1}(x)\\
+\vdots & \ddots & \vdots\\
+N_0(x_{m-1}) & \dots & N_{m-1}(x_{m-1})
+\end{pmatrix}
+\begin{pmatrix}
+\alpha_1 \\
+\vdots\\
+\alpha_{m-1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+y_1 \\
+\vdots\\
+y_{m-1}
+\end{pmatrix}
+\end{equation*}
+Diese Gleichungen sind aber ineffizient zu lösen, desshalb benutzt man sogenannte "Dividierte Differenzen". Siehe dafür Seite 114 im Skript.
+
+
+\end{enumerate}
+
+
+\end{multicols}
+\end{document}
